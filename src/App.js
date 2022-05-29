@@ -2,6 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+	const [result, setResult] = useState("");
+useEffect(() => {
+ fetch("/api/greeting").then((response) => {
+  setResult(response.data);
+ });
+}, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
+{result && <h1>{result}</h1>}
     </div>
   );
 }

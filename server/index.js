@@ -6,6 +6,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
 
+app.get('/api/hello', (req, res) => {
+res.send('Hello there');
+});
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
